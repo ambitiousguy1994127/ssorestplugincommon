@@ -1,0 +1,160 @@
+@smretries=9999
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Login Test Application</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content=no-cache http-equiv=Pragma>
+<META content="Tuesday, January 1, 1980 00:00:00 GMT" http-equiv=Expires>
+<META content=no-cache http-equiv=Cache-control>
+<STYLE type="text/css">
+html {
+	overflow-y: scroll;
+	background-image: url(/style/back.png);
+}
+body{
+	padding: 0 0 0 0;
+	margin: 10px 0 0 10px;
+	font-family: arial,sans-serif;
+}
+h1 {
+	margin: 0 0 0 0;
+}
+h3 {
+	font-size: 16px;
+	margin: 0 0 0 0;
+	padding: 10px;
+}
+a, a:visited, a:active {
+	text-decoration: none;
+	color: #000000;
+}
+#requestInfoHeading, #cookiesHeading {
+	background-color: #E6E6E6;
+}
+#headersHeading, #sessionVariablesHeading {
+	background-color: #CCCCCC;
+}
+#main {
+	margin: 0 auto;
+	width: 800px;
+	word-wrap: break-word;
+	background-color: #FFFFFF;
+	border-radius: 0 0 7px 7px;
+	padding: 0 0 25px 0;
+
+}
+ul {
+	margin: 0 0 0 0;
+	padding: 15px 35px 15px 35px;
+	width: 730px;
+}
+#header {
+	margin: 0 auto;
+	width: 800px;
+	padding: 0 0 10px 0;
+	background-color: #FFFFFF;
+	border-radius: 7px 7px 0 0;
+}
+#title {
+	padding: 5px 0 0 10px;
+}
+#logo {
+padding: 10px 0 0 0;
+}
+
+#menu ul {
+	list-style-type: none;
+}
+#menu ul li {
+	display: inline;
+	padding: 0 10px 0 10px;
+	width: 170px;
+}
+#menu ul li a:hover {
+	text-decoration: underline;
+}
+#menu {
+	width: 530px;
+	margin: 0 auto;
+}
+#login {
+	background-color: #CCCCCC;
+	width: 300px;
+	margin: 0 auto;
+	padding: 15px;
+	border-radius: 7px 7px 7px 7px;
+	height: 75px;
+}
+#username, #password {
+	float: left;
+	width: 200px;
+}
+#login label {
+	width: 90px;
+	float: left;
+}
+#loginerror {
+	color: #FF0000;
+}
+</STYLE>
+<script>
+function toggle(id) {
+    var div1 = document.getElementById(id)
+    if (div1.style.display == 'none') {
+        div1.style.display = 'block'
+    } else {
+        div1.style.display = 'none'
+    }
+}
+
+function getCookie(name) {
+	var sPos = document.cookie.indexOf(name + "="); 
+	var len = sPos + name.length + 1; 
+	if((!sPos) && (name != document.cookie.substring(0, name.length))) { 
+		return null; 
+	} 
+	if(sPos == -1) { 
+		return null; 
+	} 
+	var ePos = document.cookie.indexOf(';', len); 
+	if(ePos == -1) ePos = document.cookie.length; 
+	return unescape(document.cookie.substring(len, ePos)); 
+}
+
+function onload() {
+	document.getElementById("usernameLabel").focus();
+	if (getCookie("SMTRYNO") >= 1) {
+		document.getElementById("credcheck").style.display="inline";
+	}
+}
+
+</script>
+</HEAD>
+
+<BODY>
+<div id="header">
+<div id="logo">
+<img src="../style/idfclogo.png">
+</div>
+
+</div>
+<div id="main">
+<div id="login">
+<form method=POST>
+	      <input type=hidden name=target value="$$target$$">
+	      <input type=hidden name=smquerydata value="$$smquerydata$$">
+	      <input type=hidden name=smauthreason value="$$smauthreason$$">
+	      <input type=hidden name=smagentname value="$$smagentname$$">
+	      <input type=hidden name=postpreservationdata value="$$postpreservationdata$$">
+
+  <label for="username">Username:</label><input type="text" name="username" id="username"><br>
+  <label for="password">Password:</label><input type="password" name="password" id="password"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<div id="loginerror">
+	<p>Invalid credentials, please try again</p>
+</div>
+</div>
+</div>
+
+</BODY></HTML>
